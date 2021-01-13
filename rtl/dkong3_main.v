@@ -26,7 +26,7 @@ module dkong3_main
    input        I_DLWR,
 
    output [15:0]O_MCPU_A,
-   output  [7:0]WI_D,
+   output [7:0] WI_D,
    output       O_MCPU_RDn,
    output       O_MCPU_WRn,
 
@@ -61,6 +61,8 @@ wire   [15:0]W_MCPU_A;
 wire   [7:0]ZDO, ZDI;
 //wire   [7:0]WI_D = ZDI;
 assign WI_D = ZDI;
+
+
 
 Z80IP CPU
 (

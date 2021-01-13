@@ -22,12 +22,7 @@ module dkong3_sound
    output signed [15:0]O_SAMPLE
 );
 
-reg   [7:0]I_MCPU_DO_REG;
 
-always @(posedge I_CLK_24M)
-begin
-	I_MCPU_DO_REG<=I_MCPU_DO;
-end
 
 //--------
 // Clocks
@@ -138,7 +133,7 @@ begin
    prev4EQ0 <= I_4E_Q[0];
    
    if (~prev4EQ0 & I_4E_Q[0]) begin
-      sub1inp0 <= I_MCPU_DO_REG;
+      sub1inp0 <= I_MCPU_DO;
    end
 
 end
@@ -163,7 +158,7 @@ begin
    prev4EQ1 <= I_4E_Q[1];
    
    if (~prev4EQ1 & I_4E_Q[1]) begin
-      sub1inp1 <= I_MCPU_DO_REG;
+      sub1inp1 <= I_MCPU_DO;
    end
 
 end
@@ -253,7 +248,7 @@ begin
    prev4EQ2 <= I_4E_Q[2];
    
    if (~prev4EQ2 & I_4E_Q[2]) begin
-      sub2inp <= I_MCPU_DO_REG;
+      sub2inp <= I_MCPU_DO;
    end
 
 end
