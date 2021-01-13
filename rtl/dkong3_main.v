@@ -256,6 +256,7 @@ wire [7:0]W_SW_DO;
 
 dkong3_input inputs
 (
+	.clk(I_CLK_12M),
    .I_SW1(I_SW1),
    .I_SW2(I_SW2),
    .I_DIP1(I_DIP1),

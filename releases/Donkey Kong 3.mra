@@ -8,7 +8,7 @@
   <category>Platform</category>
   <rbf>DonkeyKong3</rbf>
 
-  <buttons names="Jump,Start 1P,Start 2P,Coin" default="A,Start,Select,R" />
+  <buttons names="Jump,Start 1P,Start 2P,Coin,Test" default="A,Start,Select,R,L" />
 
   <switches default="00,00">
     <dip bits="0,1" name="Lives" ids="3,4,5,6"/>

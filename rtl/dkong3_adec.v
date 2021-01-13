@@ -42,7 +42,7 @@ module dkong3_adec
    output       O_DIP1_OE_n,     // 7D00 H           (R mode)
    output       O_DIP2_OE_n,     // 7D80 H           (R mode)
    output  [7:0]O_3E_Q,          // Misc control signals
-   output  [3:0]O_4E_Q,          // Sound control
+   output  reg [3:0]O_4E_Q,          // Sound control
    output       O_SUB_RESETn
 );
 
@@ -176,7 +176,8 @@ logic_74xx138 U_4E
    .O_Q(W_4E_Q)
 );
 
-assign O_4E_Q = W_4E_Q[3:0];
+always @(posedge I_CLK12M)
+ O_4E_Q = W_4E_Q[3:0];
 
 //-----------------------------------
 // 74LS138 @ 4F
