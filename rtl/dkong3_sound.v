@@ -24,7 +24,7 @@ module dkong3_sound
 
 reg   [7:0]I_MCPU_DO_REG;
 
-always @(posedge I_SUBCLK)
+always @(posedge I_CLK_24M)
 begin
 	I_MCPU_DO_REG<=I_MCPU_DO;
 end

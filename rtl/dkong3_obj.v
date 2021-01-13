@@ -164,7 +164,7 @@ wire   W_5L_RST = ~I_H_CNT[9];
 always@(posedge CLK_5L or negedge W_5L_RST)
 begin
    if(W_5L_RST == 1'b0) W_5L_Q <= 0;
-   else                 W_5L_Q <= W_5L_Q +1;
+   else                 W_5L_Q <= W_5L_Q +1'b1;
 end
 
 //------  PARTS 6M  ----------------------------------------------
@@ -224,6 +224,7 @@ wire   W_5J  = W_8N_Q|W_6F;
 wire   W_6L1 = ~(W_5J|W_5B);
 
 //------  PARTS 6H  ----------------------------------------------       
+/*
 wire   W_6H_G = ~W_5F2_Q[1];
 reg    [7:0]W_6H_Q;
 always@(W_6H_G or W_HD[7:0])
@@ -232,6 +233,13 @@ begin
    else
       W_6H_Q <= W_6H_Q;
 end
+*/
+wire    [7:0]W_6H_Q;
+reg    [7:0]W_6H_Q_reg;
+wire   W_6H_G = ~W_5F2_Q[1];
+assign W_6H_Q = W_6H_G ? W_HD[7:0] : W_6H_Q_reg;
+always @(posedge I_CLK_24M) W_6H_Q_reg <= W_6H_Q;
+
 //----------------------------------------------------------------
 
 //------------
@@ -312,16 +320,16 @@ begin
       W_3E_Q <= W_3E_LD_DI;
    else begin
       if(W_3E_RST == 1'b0) 
-         W_3E_Q <= 0 ;
+         W_3E_Q <= 8'b0 ;
       else     
-         W_3E_Q <= W_3E_Q +1;
+         W_3E_Q <= W_3E_Q +1'b1;
    end
 end
 
 wire   [5:0]W_RAM_2EH_DO;
 wire   [5:0]W_3J_B       = {W_6K_Q[3:0],W_8B_Y[2],W_8B_Y[3]};
 
-wire   [5:0]W_RAM_2EH_DI = W_6K_Q[5] ? 8'h00 :(W_8B_Y[2]|W_8B_Y[3])? W_3J_B: W_RAM_2EH_DO;
+wire   [5:0]W_RAM_2EH_DI = W_6K_Q[5] ? 6'h00 :(W_8B_Y[2]|W_8B_Y[3])? W_3J_B: W_RAM_2EH_DO;
 wire   [7:0]W_RAM_2EH_AB = W_3E_Q[7:0]^{8{W_6K_Q[4]}};
 
 ram_2EH7M U_2EH_7M

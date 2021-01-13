@@ -52,7 +52,7 @@ parameter V_BL_W  = 15;
 reg    [10:0]H_CNT_r = 0;
 always@(posedge I_CLK)
 begin
-   H_CNT_r <= (H_CNT_r == H_count-1)? 0 : H_CNT_r+1 ;
+   H_CNT_r <= (H_CNT_r == H_count-1'b1)? 11'b0 : H_CNT_r+1'b1 ;
 end
 
 assign H_CNT[9:0] = H_CNT_r[10:1];
@@ -80,7 +80,7 @@ begin
    if(I_RST_n == 1'b0)
       V_CNT_r <= 0 ;
    else
-      V_CNT_r <= (V_CNT_r == 255)? 504 : V_CNT_r+1 ;
+      V_CNT_r <= (V_CNT_r == 255)? 9'd504 : V_CNT_r+1'b1 ;
 end
 
 reg    V_BLANK;

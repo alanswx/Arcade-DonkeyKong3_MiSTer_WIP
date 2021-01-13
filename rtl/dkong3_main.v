@@ -187,7 +187,7 @@ ram_2048_8 U_7F
 
 always@(posedge I_CLK_12M)
 begin
-   W_MRAM7F_DO <= (W_MCPU_RDn == 1'b0 & W_MRAM_CS_n[0] == 1'b0) ? W_7F_DO : 0;
+   W_MRAM7F_DO <= (W_MCPU_RDn == 1'b0 & W_MRAM_CS_n[0] == 1'b0) ? W_7F_DO : 8'b0;
 end
 
 //------------------------------------------
